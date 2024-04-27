@@ -32,7 +32,7 @@ void InitRenderSet(const VertexOffsets* offsets)
                 else if(offsets->numOffsets[i] == 2)
                     glVertexAttribPointer(i, offsets->numCounts[i], GL_HALF_FLOAT, 0, offsets->totalSize, (void*)(offsets->numCounts[i] * 2));
                 else if(offsets->numOffsets[i] == 8)
-                    glVertexAttribPointer(i, offsets->numCounts[i], GL_DOUBLE, 0, offsets->totalSize, (void*)(offsets->numCounts[i] * 2));
+                    glVertexAttribPointer(i, offsets->numCounts[i], GL_DOUBLE, 0, offsets->totalSize, (void*)(offsets->numCounts[i] * 8));
             }
             case 1:
             {
