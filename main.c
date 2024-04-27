@@ -1,13 +1,18 @@
 #include <stdio.h>
-#include "Renderer/Renderer.h"
+#include "Renderer/MiniRender.h"
 
 int main(void)
 {
-    InitWindow(1280, 720, "Test");
-    while (WindowShouldClose())
+    const WindowSettings settings = (WindowSettings){3, 3, 1280, 720, "Window"};
+    uint8_t offsetCount[] = {3, 3, 2};
+    uint8_t offsetByte[] = {4,4,4};
+    VertexOffsets offset = (VertexOffsets){3, offsetCount, offsetByte, 30, 0};
+    InitMiniRenderer(settings, &offset);
+    while (IsWindowOpen())
     {
-        UpdateWindow();
+
+
+        UpdateMiniRenderer();
     }
-    CleanWindow();
     return 0;
 }
