@@ -36,7 +36,7 @@ typedef struct
 
 typedef struct
 {
-    //When we want to add a mesh we add it to these
+    //  When we want to add a mesh we add it to these
     void* _allMeshVertexData;
     void* _allMeshIndiceData;
     uint32_t meshVertexSize;
@@ -48,5 +48,5 @@ void UpdateMiniRenderer();
 void CleanMiniRenderer();
 int IsWindowOpen();
 
-//  Quick testing for cube
+//  Quick testing for triangle
 void AddTriMesh();
