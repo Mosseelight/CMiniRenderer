@@ -7,7 +7,7 @@ typedef struct
 {
     uint8_t _majorVersion, _minorVersion;
     int _windowSizeX, _windowSizeY;
-    char* title;
+    char* _title;
 } WindowSettings;
 
 //  Struct to allow any type of vertex to be passed in
@@ -34,6 +34,19 @@ typedef struct
     uint8_t Type;
 } VertexOffsets;
 
+typedef struct
+{
+    //When we want to add a mesh we add it to these
+    void* _allMeshVertexData;
+    void* _allMeshIndiceData;
+    uint32_t meshVertexSize;
+    uint32_t meshIndiceSize;
+} RendererData;
+
 void InitMiniRenderer(WindowSettings settings, VertexOffsets* offset);
 void UpdateMiniRenderer();
+void CleanMiniRenderer();
 int IsWindowOpen();
+
+//  Quick testing for cube
+void AddTriMesh();

@@ -1,5 +1,9 @@
 #include "Batcher.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //  use the renderset way but just have one for now
 RenderSet _renderSet;
 
@@ -44,12 +48,21 @@ void InitRenderSet(const VertexOffsets* offsets)
     glBindVertexArray(0);
 }
 
-void UpdateRenderSet()
+void UpdateRenderSet(const void* meshVertexData, const void* meshIndiceData, const uint32_t vertexSize, const uint32_t indiceSize)
 {
+    glBindVertexArray(_renderSet.vao);
+    glBindBuffer(GL_ARRAY_BUFFER, _renderSet.vbo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _renderSet.ebo);
 
+    glBufferData(GL_ARRAY_BUFFER, vertexSize, meshVertexData, GL_STREAM_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indiceSize, meshIndiceData, GL_STREAM_DRAW);
+
+    glBindVertexArray(0);
 }
 
 void CleanRenderSet()
 {
-
+    glDeleteVertexArrays(1, &_renderSet.vao);
+    glDeleteBuffers(1, &_renderSet.vbo);
+    glDeleteBuffers(1, &_renderSet.ebo);
 }
