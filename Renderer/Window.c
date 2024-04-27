@@ -5,7 +5,7 @@
 typedef struct
 {
     uint8_t _majorVersion, _minorVersion;
-    int _windowSizeX, _windowSizeY;
+    uint16_t _windowSizeX, _windowSizeY;
     char* title;
     GLFWwindow* _windowContext;
 } WindowData;
@@ -13,9 +13,9 @@ typedef struct
 WindowData _windowData;
 void ResizeWindow();
 
-void InitWindow(const WindowSettings settings)
+void InitWindow(uint16_t sizeX, uint16_t sizeY, char title[])
 {
-    _windowData = (WindowData){settings._majorVersion, settings._minorVersion, settings._windowSizeX, settings._windowSizeY, settings.title};
+    _windowData = (WindowData){3,3, sizeX, sizeY, title};
 
     glfwInit();
 
@@ -23,7 +23,7 @@ void InitWindow(const WindowSettings settings)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, _windowData._minorVersion);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    _windowData._windowContext = glfwCreateWindow(_windowData._windowSizeX, _windowData._windowSizeY, _windowData.title, NULL, NULL);
+    _windowData._windowContext = glfwCreateWindow(sizeX, sizeY, _windowData.title, NULL, NULL);
     glfwMakeContextCurrent(_windowData._windowContext);
     gladLoadGL();
     glEnable(GL_DEPTH_TEST);

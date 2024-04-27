@@ -1,8 +1,7 @@
 #pragma once
 #include <stdint.h>
-#include "Renderer.h"
 
-void InitWindow(WindowSettings settings);
+void InitWindow(uint16_t sizeX, uint16_t sizeY, char title[]);
 void UpdateWindow();
 void CleanWindow();
 int WindowShouldClose();
