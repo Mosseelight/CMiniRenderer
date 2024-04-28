@@ -6,6 +6,7 @@
 
 #include "Window.h"
 #include "Batcher.h"
+#include "Shader.h"
 
 RendererData _renderData;
 
@@ -14,6 +15,8 @@ void InitMiniRenderer(WindowSettings settings, VertexOffsets* offset)
     //  Init our window
     InitWindow(settings);
     InitRenderSet(offset);
+
+    Shader shaderTest = CompileShader("test", "test");
 }
 
 void UpdateMiniRenderer()

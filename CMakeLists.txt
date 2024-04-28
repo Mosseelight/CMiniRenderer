@@ -12,6 +12,7 @@ add_executable(Renderer main.c
         Renderer/Batcher.h
         Renderer/MiniRender.h
         Renderer/Shader.h
+        Renderer/Shader.c
 )
 
 #Glad includes
